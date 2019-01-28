@@ -1,28 +1,15 @@
-import { ApolloServer, gql } from 'apollo-server-express';
+import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
 import 'reflect-metadata';
+import { formatArgumentValidationError } from 'type-graphql';
 import { createConnection } from 'typeorm';
+import { createSchema } from './modules/schema';
 
-const typeDefs = gql`
-  type Query {
-    """
-    Hello World GraphQL Query
-    """
-    hello: String!
-  }
-`;
-
-const resolvers = {
-  Query: {
-    hello: () => 'Hello Graphql'
-  }
-};
-
-const main = () => {
+const main = async () => {
   const app = express();
   const apolloServer = new ApolloServer({
-    typeDefs,
-    resolvers
+    schema: await createSchema(),
+    formatError: formatArgumentValidationError
   });
 
   apolloServer.applyMiddleware({ app });
