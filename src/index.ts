@@ -1,5 +1,7 @@
 import { ApolloServer, gql } from 'apollo-server-express';
 import express from 'express';
+import 'reflect-metadata';
+import { createConnection } from 'typeorm';
 
 const typeDefs = gql`
   type Query {
@@ -25,7 +27,8 @@ const main = () => {
 
   apolloServer.applyMiddleware({ app });
 
-  app.listen(4000, () => {
+  app.listen(4000, async () => {
+    await createConnection();
     console.log(`🚀 server running at http://localhost:4000/graphql`);
   });
 };
