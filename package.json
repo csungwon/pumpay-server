@@ -1,0 +1,16 @@
+{
+  "name": "pumpay-server",
+  "version": "1.0.0",
+  "description": "graphql backend server for pumpay",
+  "main": "src/index.ts",
+  "repository": "https://github.com/csungwon/pumpay-server.git",
+  "author": "Sungwon Cho <csungwon@berkeley.edu>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^10.12.18",
+    "ts-node": "^8.0.2",
+    "ts-node-dev": "^1.0.0-pre.32",
+    "typescript": "^3.2.4"
+  }
+}
