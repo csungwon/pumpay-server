@@ -12,7 +12,7 @@ export class LogoutResolver {
           reject(false);
         }
         context.res.clearCookie('qid');
-        return resolve(true);
+        resolve(true);
       });
     });
   }
